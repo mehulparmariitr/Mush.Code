@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // mListView = (ListView) findViewById(R.id.listView);
         networkImageView = (NetworkImageView) findViewById(R.id.profilePic);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         sharedPreferences = getSharedPreferences(filename, 0);
