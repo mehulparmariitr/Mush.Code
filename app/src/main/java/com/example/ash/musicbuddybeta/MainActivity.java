@@ -140,10 +140,6 @@ public class MainActivity extends AppCompatActivity {
         refresh();
         setupFeed();
 
-//        Log.v("Bitmap", "here: " + imageBitmap.toString());
-        //networkImageView.setImageBitmap(imageBitmap);
-
-
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
