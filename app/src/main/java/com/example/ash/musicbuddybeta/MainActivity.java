@@ -329,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
         getDatabase.close();
         Log.v("cursor", "reached");
         return cursorAdapter;
+        //test
     }
 
     private void populateListView() {
