@@ -154,12 +154,6 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(myReceiver, intentFilter);
 
         /*printHashKey();*/
-
-        refresh();
-        populateListView();
-        Toast.makeText(MainActivity.this, "fuckk you fuck this fuck all", Toast.LENGTH_SHORT).show();
-
-
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -185,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateWithToken(AccessToken currentAccessToken) {
-
         if (currentAccessToken != null) {
             startActivity(new Intent("android.intent.action.MAINACTIVITY"));
             finish();
@@ -194,21 +187,9 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-            /*new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    Intent i = new Intent(MainActivity.this, MainFragment.class);
-                    startActivity(i);
-
-                    finish();
-                }
-            }, 0);
-        }*/
     }
 
     private void refresh() {
-
         String handleString = sharedPreferences.getString("handlelist", "NA");
         Type type = new TypeToken<ArrayList<String>>() {
         }.getType();
@@ -228,8 +209,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getFeeds(final String handle) {
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, showURL, new Response.Listener<String>() {
-
-
             @Override
             public void onResponse(String response) {
 
@@ -240,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                     sqliteObject.open();
                         /*sqliteObject.deleteAll();*/
                         /*JSONArray feeds = feed.getJSONArray("feed"); //key of encoded returned JSONarray*/
-                    Log.v("fuckingfb", response);
+                    Log.v("fuckingfb", response + "on Response func");
 
                     for (int i = feeds.length() - 1; i >= 0; i--) {
                         JSONObject feed = feeds.getJSONObject(i);
@@ -346,10 +325,10 @@ public class MainActivity extends AppCompatActivity {
     private SimpleCursorAdapter getCursorAdp(){
         SQLiteDB getDatabase = new SQLiteDB(MainActivity.this);
         getDatabase.open();
-        SimpleCursorAdapter cursor = getDatabase.getCursorAdapter();
+        SimpleCursorAdapter cursorAdapter = getDatabase.getCursorAdapter();
         getDatabase.close();
         Log.v("cursor", "reached");
-        return cursor;
+        return cursorAdapter;
     }
 
     private void populateListView() {

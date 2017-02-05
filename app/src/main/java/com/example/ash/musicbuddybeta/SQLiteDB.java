@@ -13,7 +13,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
  */
 public class SQLiteDB {
 
-    public static final String KEY_ROWID = "_id";
+    private static final String KEY_ROWID = "_id";
     public static final String KEY_NAME = "device_name";
     public static final String KEY_TIMESTAMP = "time_detail";
     public static final String KEY_TRACK = "track_name";
@@ -58,8 +58,6 @@ public class SQLiteDB {
         contentValues.put(KEY_TIME, time);
         return ourDatabase.insert(DATABASE_TABLE, null, contentValues);
     }
-
-    //public SimpleCursorAdapter getCursorAdapter() {
 
     public SimpleCursorAdapter getCursorAdapter() {
         /*String[] columns = ALL_KEYS;

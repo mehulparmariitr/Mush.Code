@@ -64,7 +64,7 @@ public class MusicReceiver extends Service {
             String artist = intent.getStringExtra("artist");
             String album = intent.getStringExtra("album");
             String track = intent.getStringExtra("track");
-            Log.v("tag", artist + ":" + album + ":" + track);
+            Log.v("Music Receiver:", artist + ":" + album + ":" + track);
             Toast.makeText(MusicReceiver.this, track, Toast.LENGTH_SHORT).show();
 
             Intent returnData = new Intent();
