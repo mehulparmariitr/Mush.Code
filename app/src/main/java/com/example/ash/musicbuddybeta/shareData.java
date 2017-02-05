@@ -23,7 +23,6 @@ public class shareData extends Service {
 
     String id, track, artist, album;
     String insertURL = "http://mush.000webhostapp.com/insert.php";
-    /*String showURL = "http://edmstreet.com/show.php";*/
     RequestQueue requestQueue;
     SharedPreferences sharedPreferences;
 

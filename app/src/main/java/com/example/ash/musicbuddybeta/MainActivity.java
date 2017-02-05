@@ -115,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(myReceiver);
-
-
     }
 
     @Override
@@ -135,16 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //recyclerView.setHasFixedSize(true); //For Performace Improvement
-
-        refresh();
-        setupFeed();
+        Toast.makeText(this, "Main activity started", Toast.LENGTH_LONG).show();
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refresh();
-                populateListView();
+                setupFeed();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -288,31 +284,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String timeStamp(String timestamp) {
-/*        String milliseconds1 = "0";
-        String currentDateandTime = "0";
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        currentDateandTime = sdf.format(new Date());
-        Date date;
-        try {
-            date = sdf.parse(currentDateandTime);
-
-
-            milliseconds1 = String.valueOf(new Date().getTime());
-            Toast.makeText(MainActivity.this, "sdf" + milliseconds1, Toast.LENGTH_LONG).show();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Toast.makeText(MainActivity.this, currentDateandTime
-                , Toast.LENGTH_LONG).show();
-        String msimi = String.valueOf(System.currentTimeMillis());
-        Toast.makeText(MainActivity.this, "current" + msimi, Toast.LENGTH_LONG).show();*/
-        //Log.v("time", "currenttime " + System.currentTimeMillis());
         long milliseconds = Math.abs(System.currentTimeMillis() - timeStampinMilli(timestamp));
-
-
         String sharedTime = "";
         long seconds = milliseconds / 1000;
         //Log.v("time", "difference " + seconds);
@@ -334,23 +306,17 @@ public class MainActivity extends AppCompatActivity {
 
     private long timeStampinMilli(String timestamp) {
         long milliseconds = 0;
-//        String milliseconds1="0";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 //        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date;
         try {
             date = simpleDateFormat.parse(timestamp);
 
-//            Toast.makeText(MainActivity.this, date.toString(), Toast.LENGTH_LONG).show();
-
             milliseconds = date.getTime();
-//            milliseconds1= String.valueOf(date.getTime());
-//            Toast.makeText(MainActivity.this,  milliseconds1, Toast.LENGTH_LONG).show();
         } catch (ParseException e) {
             milliseconds = 0;
             e.printStackTrace();
         }
-        //Log.v("time", "serverMili " + milliseconds);
         return milliseconds;
     }
 
@@ -438,6 +404,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+
+        refresh();
+        setupFeed();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

@@ -43,8 +43,5 @@ public class updateNotification {
                         .setAutoCancel(true)/*.setTicker("")*/;
 
         notificationManager.notify(Id, mBuilder.build());
-
     }
-
-
 }
