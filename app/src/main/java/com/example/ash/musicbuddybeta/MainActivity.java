@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject feed = feeds.getJSONObject(i);
 
                         int sid = feed.getInt("sid");
-                        int id = feed.getInt("id");
+                        int id = feed.getInt("guid");
                         String track = feed.getString("track");
                         String artist = feed.getString("artist");
                         String timestamp = feed.getString("timestamp");
@@ -329,7 +329,6 @@ public class MainActivity extends AppCompatActivity {
         getDatabase.close();
         Log.v("cursor", "reached");
         return cursorAdapter;
-        //test
     }
 
     private void populateListView() {

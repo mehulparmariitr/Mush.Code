@@ -64,7 +64,7 @@ public class SQLiteDB {
         int[] toViewIDs = new int[]{R.id.tvID, R.id.tvName, R.id.tvTimestamp, R.id.tvTrack, R.id.tvArtist, R.id.tvTime};*/
         String[] columns = SOME_KEYS;
         int[] toViewIDs = new int[]{R.id.tvID, R.id.tvName, R.id.tvTimestamp, R.id.tvTrack, R.id.tvArtist};
-        Cursor cursor = ourDatabase.query(true, DATABASE_TABLE, columns, null, null,
+        Cursor cursor = ourDatabase.query(false, DATABASE_TABLE, columns, null, null,
                 null, null, KEY_TIME + " DESC", null, null);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -82,12 +82,13 @@ public class SQLiteDB {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" +
-                    KEY_ROWID + " INTEGER, " +
-                    KEY_NAME + " TEXT, " +
-                    KEY_TIMESTAMP + " TEXT, " +
-                    KEY_TRACK + " TEXT, " +
-                    KEY_ARTIST + " TEXT, " +
-                    KEY_TIME + " LONG);");
+                    KEY_ROWID      + " INTEGER, " +
+                    KEY_NAME       + " TEXT, "    +
+                    KEY_TIMESTAMP  + " TEXT, "    +
+                    KEY_TRACK      + " TEXT, "    +
+                    KEY_ARTIST     + " TEXT, "    +
+                    KEY_TIME       + " LONG, "    +
+                    "PRIMARY KEY (" + KEY_ROWID + "));");
         }
 
         @Override

@@ -24,12 +24,6 @@ public class updateNotification {
         insertData.putExtra("album", Album);
         PendingIntent insertDataPendingIntent = PendingIntent.getService(context, 0, insertData, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        /*remoteView.setImageViewResource(R.id.imageView_left, R.drawable.notification_icon);
-        remoteView.setImageViewResource(R.id.bShare, R.drawable.notification_icon);
-        remoteView.setTextViewText(R.id.tvTrack, nameTrack);
-        remoteView.setTextViewText(R.id.tvArtist, nameArtist);*/
-
-
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.notification_icon)

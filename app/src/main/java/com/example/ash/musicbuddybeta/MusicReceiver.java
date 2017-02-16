@@ -24,7 +24,6 @@ public class MusicReceiver extends Service {
         iF.addAction("com.android.music.metachanged");
 
         iF.addAction("com.htc.music.metachanged");
-
         iF.addAction("fm.last.android.metachanged");
         iF.addAction("com.sec.android.app.music.metachanged");
         iF.addAction("com.nullsoft.winamp.metachanged");
