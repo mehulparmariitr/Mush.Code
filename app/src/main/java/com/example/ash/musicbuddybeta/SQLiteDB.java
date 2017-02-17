@@ -14,13 +14,14 @@ import android.support.v4.widget.SimpleCursorAdapter;
 public class SQLiteDB {
 
     private static final String KEY_ROWID = "_id";
-    public static final String KEY_NAME = "device_name";
-    public static final String KEY_TIMESTAMP = "time_detail";
-    public static final String KEY_TRACK = "track_name";
-    public static final String KEY_ARTIST = "artist_name";
-    public static final String KEY_TIME = "time_millis";
+    private static final String KEY_NAME = "device_name";
+    private static final String KEY_TIMESTAMP = "time_detail";
+    private static final String KEY_TRACK = "track_name";
+    private static final String KEY_ARTIST = "artist_name";
+    private static final String KEY_ALBUM = "album_name";
+    private static final String KEY_TIME = "time_millis";
     public static final String[] ALL_KEYS = {KEY_ROWID, KEY_NAME, KEY_TIMESTAMP, KEY_TRACK, KEY_ARTIST, KEY_TIME};
-    public static final String[] SOME_KEYS = {KEY_ROWID, KEY_NAME, KEY_TIMESTAMP, KEY_TRACK, KEY_ARTIST};
+    private static final String[] SOME_KEYS = {KEY_ROWID, KEY_NAME, KEY_TIMESTAMP, KEY_TRACK, KEY_ARTIST};
     private static final String DATABASE_NAME = "SQLiteDBdb";
     private static final String DATABASE_TABLE = "table_name";
     private static final int DATABASE_VERSION = 1;
@@ -48,13 +49,14 @@ public class SQLiteDB {
         ourDatabase.delete(DATABASE_TABLE, null, null);
     }
 
-    public long insert(int id, String name, String timestamp, String track, String artist, Long time) {
+    public long insert(int id, String name, String track, String artist, String album, String timestamp, Long time) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_ROWID, id);
         contentValues.put(KEY_NAME, name);
-        contentValues.put(KEY_TIMESTAMP, timestamp);
         contentValues.put(KEY_TRACK, track);
         contentValues.put(KEY_ARTIST, artist);
+        contentValues.put(KEY_ALBUM, album);
+        contentValues.put(KEY_TIMESTAMP, timestamp);
         contentValues.put(KEY_TIME, time);
         return ourDatabase.insert(DATABASE_TABLE, null, contentValues);
     }
@@ -84,9 +86,10 @@ public class SQLiteDB {
             db.execSQL("CREATE TABLE " + DATABASE_TABLE + " (" +
                     KEY_ROWID      + " INTEGER, " +
                     KEY_NAME       + " TEXT, "    +
-                    KEY_TIMESTAMP  + " TEXT, "    +
                     KEY_TRACK      + " TEXT, "    +
                     KEY_ARTIST     + " TEXT, "    +
+                    KEY_ALBUM      + " TEXT, "    +
+                    KEY_TIMESTAMP  + " TEXT, "    +
                     KEY_TIME       + " LONG, "    +
                     "PRIMARY KEY (" + KEY_ROWID + "));");
         }

@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class shareData extends Service {
 
-    String id, track, artist, album;
+    String track, artist, album;
     String insertURL = "http://mush.000webhostapp.com/insert.php";
     RequestQueue requestQueue;
     SharedPreferences sharedPreferences;
@@ -37,7 +37,6 @@ public class shareData extends Service {
 //        handle = sharedPreferences.getString("handle", "");
 //        name = sharedPreferences.getString("name", "Name NA");
 //        email = sharedPreferences.getString("email", "Email NA");
-         id = "1";// for testing
     }
 
     @Override
@@ -65,7 +64,7 @@ public class shareData extends Service {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
 
-                parameters.put("id", id);
+                parameters.put("handle", "Insert handle here");
                 parameters.put("track", track);
                 parameters.put("artist", artist);
                 parameters.put("album", album);

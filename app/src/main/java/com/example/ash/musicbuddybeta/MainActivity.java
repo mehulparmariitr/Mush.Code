@@ -224,16 +224,16 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = feeds.length() - 1; i >= 0; i--) {
                         JSONObject feed = feeds.getJSONObject(i);
 
-                        int sid = feed.getInt("sid");
-                        int id = feed.getInt("guid");
-                        String track = feed.getString("track");
-                        String artist = feed.getString("artist");
+                        int id           = feed.getInt("id");
+                        String track     = feed.getString("track");
+                        String artist    = feed.getString("artist");
+                        String album     = feed.getString("album");
                         String timestamp = feed.getString("timestamp");
                         Long timeMilli = timeStampinMilli(timestamp);
                         //Log.v("time", "fromServer " + timestamp);
                         timestamp = timeStamp(timestamp);
 
-                        sqliteObject.insert(id, "Mehul", timestamp, track, artist, timeMilli);
+                        sqliteObject.insert(id, "Mehul", track, artist, album, timestamp, timeMilli);
                     }
                     sqliteObject.close();
                 } catch (JSONException e) {
